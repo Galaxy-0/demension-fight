@@ -1,0 +1,228 @@
+# Python相关
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# 单元测试 / 覆盖率报告
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# 翻译
+*.mo
+*.pot
+
+# Django相关
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask相关
+instance/
+.webassets-cache
+
+# Scrapy相关
+.scrapy
+
+# Sphinx文档
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pdm
+.pdm.toml
+.pdm-python
+.pdm-build/
+
+# PEP 582
+__pypackages__/
+
+# Celery相关
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath解析文件
+*.sage.py
+
+# 环境变量
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder项目设置
+.spyderproject
+.spyproject
+
+# Rope项目设置
+.ropeproject
+
+# mkdocs文档
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre类型检查器
+.pyre/
+
+# pytype静态类型分析器
+.pytype/
+
+# Cython调试符号
+cython_debug/
+
+# PyCharm
+.idea/
+
+# 游戏开发相关
+# 游戏资源文件（如果有大型资源文件）
+assets/large/
+*.wav
+*.mp3
+*.ogg
+*.mp4
+*.avi
+*.mov
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+# 注意：如果项目需要这些资源文件，请移除相应行
+
+# 游戏存档和配置
+saves/
+config/
+settings.json
+*.save
+
+# 性能分析文件
+*.prof
+
+# 系统文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+*.tmp
+*.temp
+desktop.ini
+
+# Linux
+*~
+
+# 编辑器和IDE
+.vscode/
+*.swp
+*.swo
+*~
+
+# 临时文件
+*.tmp
+*.bak
+*.backup
+
+# 日志文件
+*.log
+logs/
+
+# 数据库文件
+*.db
+*.sqlite
+*.sqlite3
+
+# 编译输出
+*.exe
+*.app
+*.deb
+*.rpm
+
+# 包管理器
+node_modules/
+package-lock.json
+yarn.lock
+
+# uv包管理器相关
+.uv/
+uv.lock
+
+# 项目特定
+# 游戏截图和录像
+screenshots/
+recordings/
+replays/
+
+# 开发工具生成的文件
+.pytest_cache/
+.coverage
+htmlcov/
+
+# 文档生成
+docs/_build/
+docs/build/
+.cursorindexingignore
+.specstory/
