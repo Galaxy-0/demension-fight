@@ -76,7 +76,7 @@ class GameRenderer:
                 cell_height
             ) for i in range(9)
         ]
-        self.fold_labels = ["空间折叠", "时间折叠", "规则折叠", "混沌折叠"]
+        self.fold_labels = ["Space Fold", "Time Fold", "Rule Fold", "Chaos Fold"]
         
     def _apply_click_effect(self, base_color, is_clicked):
         """ Helper function to apply a visual effect to a color when clicked. """
@@ -108,7 +108,7 @@ class GameRenderer:
             # Add "[ACTIVE]" text if dimension is folded
             label_text = self.fold_labels[i]
             if is_active:
-                label_text += " [活动]" # "[ACTIVE]"
+                label_text += " [ACTIVE]" # "[ACTIVE]"
             
             text_surface = self.small_font.render(label_text, True, FOLD_BUTTON_TEXT_COLOR)
             text_rect = text_surface.get_rect(center=btn.center)
@@ -131,25 +131,14 @@ class GameRenderer:
                     pygame.draw.circle(screen, piece_color, rect.center, circle_radius)
         
         if not self.game.game_over:
-            # Highlight current player: Make text larger or add an arrow
-            status_text_str = f"玩家 {self.game.current_player} 回合"
-            status_color = PLAYER_COLORS[self.game.current_player-1]
-            
-            # Render current player's turn with a slightly larger font or different style
-            current_player_font = pygame.font.SysFont(None, int(min(self.width, self.height) * 0.075)) # Slightly larger
-            text_surface = current_player_font.render(status_text_str, True, status_color)
+            status_text_str = f"Player {self.game.current_player} Turn"
         else:
             if self.game.winner == 0:
-                status_text_str = "平局！"
-                status_color = TEXT_COLOR
-            elif self.game.winner is not None:
-                status_text_str = f"玩家 {self.game.winner} 获胜！"
-                status_color = PLAYER_COLORS[self.game.winner-1]
+                status_text_str = "Draw!"
             else:
-                status_text_str = "游戏结束！" 
-                status_color = TEXT_COLOR
-            text_surface = self.font.render(status_text_str, True, status_color)
+                status_text_str = f"Player {self.game.winner} Wins!"
         
+        text_surface = self.font.render(status_text_str, True, TEXT_COLOR)
         text_rect = text_surface.get_rect(center=(self.width // 2, self.height * 0.08))
         screen.blit(text_surface, text_rect)
         
@@ -169,7 +158,7 @@ class GameRenderer:
             final_message_rect = text_surface.get_rect(center=(self.width // 2, self.height // 2))
             screen.blit(text_surface, final_message_rect)
             
-            restart_prompt_text = "按R键重新开始"
+            restart_prompt_text = "Press R to restart"
             # Ensure restart prompt is prominent
             restart_font = pygame.font.SysFont(None, int(min(self.width, self.height) * 0.05))
             restart_text_surface = restart_font.render(restart_prompt_text, True, TEXT_COLOR)
@@ -191,8 +180,8 @@ class GameRenderer:
     def draw_menu(self, screen, menu_items, selected_item_idx):
         # TODO: Implement menu drawing
         screen.fill(BACKGROUND) # Or a different menu background
-        title_font = pygame.font.SysFont(None, int(min(self.width, self.height) * 0.1))
-        title_surface = title_font.render("维度折叠棋", True, TEXT_COLOR)
+        title_font = pygame.font.Font(None, 48)
+        title_surface = title_font.render("Dimensional Folding Tic-Tac-Toe", True, TEXT_COLOR)
         title_rect = title_surface.get_rect(center=(self.width // 2, self.height * 0.2))
         screen.blit(title_surface, title_rect)
 
@@ -212,7 +201,7 @@ class GameRenderer:
         # TODO: Implement how-to-play screen drawing
         screen.fill(BACKGROUND)
         title_font = pygame.font.SysFont(None, int(min(self.width, self.height) * 0.08))
-        title_surface = title_font.render("游戏规则", True, TEXT_COLOR)
+        title_surface = title_font.render("How to Play", True, TEXT_COLOR)
         title_rect = title_surface.get_rect(center=(self.width // 2, self.height * 0.1))
         screen.blit(title_surface, title_rect)
 
@@ -222,7 +211,7 @@ class GameRenderer:
             line_rect = line_surface.get_rect(midleft=(self.width * 0.05, self.height * (0.2 + i * 0.05)))
             screen.blit(line_surface, line_rect)
         
-        back_text = "按 ESC 或 M 返回主菜单"
+        back_text = "Press ESC or M to return to main menu"
         back_surface = self.small_font.render(back_text, True, TEXT_COLOR)
         back_rect = back_surface.get_rect(center=(self.width // 2, self.height * 0.9))
         screen.blit(back_surface, back_rect)

@@ -1,6 +1,7 @@
 import pygame
 import sys
 from enum import Enum, auto
+import os  # Add import for file existence check
 
 # Import classes from new modules
 from game_logic import DimensionalFoldingGame
@@ -23,7 +24,7 @@ except pygame.error as e:
 
 WIDTH, HEIGHT = 800, 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("维度折叠棋 - Dimensional Folding Tic-Tac-Toe") # Window Title
+pygame.display.set_caption("Dimensional Folding Tic-Tac-Toe") # Window Title
 clock = pygame.time.Clock()
 
 # Sound Effects (Placeholders - files are not actually present)
@@ -38,7 +39,12 @@ sound_files = {
 sounds = {}
 for key, filepath in sound_files.items():
     try:
-        sounds[key] = pygame.mixer.Sound(filepath)
+        # Check if file exists before attempting to load
+        if os.path.exists(filepath):
+            sounds[key] = pygame.mixer.Sound(filepath)
+        else:
+            print(f"Info: Sound file '{filepath}' not found, skipping...")
+            sounds[key] = None
     except pygame.error as e:
         print(f"Warning: Could not load sound '{filepath}': {e}")
         sounds[key] = None # Store None if loading fails
@@ -50,24 +56,24 @@ def play_sound(sound_name):
         sounds[sound_name].play()
 
 # Menu items
-menu_items = ["开始游戏", "游戏规则", "退出游戏"] # Start Game, How to Play, Exit
+menu_items = ["Start Game", "How to Play", "Exit Game"] # Start Game, How to Play, Exit
 selected_menu_item_idx = 0
 
 # How to Play text (condensed from README)
 how_to_play_content = [
-    "核心目标: 标准井字棋规则，先连成三子者胜。",
-    "特色机制: 维度折叠 - 点击左侧按钮激活/取消维度效果。",
+    "Objective: Standard tic-tac-toe rules - first to connect three wins.",
+    "Special Mechanic: Dimensional Folding - click left buttons to toggle effects.",
     "",
-    "维度效果:",
-    "1. 空间折叠: 交换中间列与右边列。",
-    "2. 时间折叠: (若同时落子)撤销本次落子。",
-    "3. 规则折叠: 翻转棋盘上所有棋子 (红变蓝, 蓝变红)。",
-    "4. 混沌折叠: 随机重排棋盘上所有棋子。",
+    "Dimensional Effects:",
+    "1. Space Folding: Swap middle and right columns.",
+    "2. Time Folding: (if placed simultaneously) undo current move.",
+    "3. Rule Folding: Flip all pieces on board (red becomes blue, blue becomes red).",
+    "4. Chaos Folding: Randomly rearrange all pieces on board.",
     "",
-    "特殊胜利: 同时激活三个维度时，棋子多的一方获胜。",
-    "平局: 棋盘填满且无人获胜。",
-    "按 'R' 键随时重开游戏。",
-    "在规则界面按 ESC 或 M 返回主菜单。"
+    "Special Victory: When three dimensions are active, player with more pieces wins.",
+    "Draw: Board is full with no winner.",
+    "Press 'R' to restart game anytime.",
+    "Press ESC or M to return to main menu from rules."
 ]
 
 
