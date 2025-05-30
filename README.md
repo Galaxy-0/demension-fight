@@ -55,10 +55,12 @@ To play Dimensional Folding Tic-Tac-Toe, you need Python and the following libra
 
 2.  **Installation:**
     *   Open a terminal or command prompt.
-    *   Install Pygame and NumPy using pip:
+    *   Navigate to the root directory of the project (where `requirements.txt` is located).
+    *   Install the required Python libraries using the `requirements.txt` file:
         ```bash
-        pip install pygame numpy
+        pip install -r requirements.txt
         ```
+    *   This will install Pygame and NumPy, which are the core dependencies for the game.
 
 3.  **Running the Game:**
     *   Navigate to the directory where the game files (`main.py`, `game_logic.py`, `rendering.py`) are located.
